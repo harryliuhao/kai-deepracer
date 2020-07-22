@@ -30,10 +30,13 @@ def reward_function(params):
         reward = 1e-3  # Penalize if the car goes off track
     elif speed < SPEED_THRESHOLD:		
         reward *= 0.5  # Penalize if the car goes too slow
+    else:
+        # High reward if the car stays on track and goes fast
+        reward = 1.0
     
-    STEERING_THRESHOLD = 20.0
-    if steering > STEERING_THRESHOLD:
-        reward *= 0.8
+    #STEERING_THRESHOLD = 20.0
+    #if steering > STEERING_THRESHOLD:
+    #    reward *= 0.8
         
     return float(reward)
         
