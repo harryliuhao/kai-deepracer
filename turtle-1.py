@@ -16,6 +16,8 @@ def reward_function(params):
     marker_2 = 0.25 * track_width
     marker_3 = 0.5 * track_width
 
+    reward=1.0
+
     # Give higher reward if the car is closer to center line and vice versa
     if distance_from_center <= marker_1:
         reward = 1.0
@@ -24,7 +26,7 @@ def reward_function(params):
     elif distance_from_center <= marker_3:
         reward = 0.1
     elif not all_wheels_on_track:
-        reward = 1e-3
+        reward = 1e-4
     elif speed < SPEED_THRESHOLD:
         reward *= 0.5
     else:
