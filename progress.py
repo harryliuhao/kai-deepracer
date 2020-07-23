@@ -12,4 +12,4 @@ def reward_function(params):
     if speed < SPEED_THRESHOLD and all_wheels_on_track:
         reward *= 0.5  # Penalize if the car goes too slow
 
-    return reward
+    return float(reward)
