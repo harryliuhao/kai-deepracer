@@ -12,7 +12,7 @@ def reward_function(params):
     #ABS_STEERING_THRESHOLD = 15
     #SPEED_TRESHOLD = 5
     #TOTAL_NUM_STEPS = 85
-    MAX_SPEED=2.8
+
 
     # Read input variables
     waypoints = params['waypoints']
@@ -20,6 +20,7 @@ def reward_function(params):
     heading = params['heading']
 
     reward = 1.0
+    SPEED_THRESHOLD = 1.2
 
     if progress == 100:
         reward += 100
@@ -44,6 +45,8 @@ def reward_function(params):
             malus = 0
         reward *= malus
 
-    reward=reward*(1+log(speed))*(progress/100)
+    #reward=reward*(1+log(speed))*(progress/100)
+    if speed < SPEED_THRESHOLD:
+        reward *= 0.5  # Penalize if the car goes too slow
 
     return reward
