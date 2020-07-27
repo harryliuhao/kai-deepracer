@@ -44,6 +44,6 @@ def reward_function(params):
             malus = 0
         reward *= malus
 
-    reward=reward*(speed/MAX_SPEED)
+    reward=reward*(1+log(speed))*(progress/100)
 
     return reward
