@@ -46,7 +46,7 @@ def reward_function(params):
         reward *= malus
 
     #reward=reward*(1+log(speed))*(progress/100)
-    if speed < SPEED_THRESHOLD:
-        reward *= 0.5  # Penalize if the car goes too slow
+    #if speed < SPEED_THRESHOLD:
+    #    reward *= 0.5  # Penalize if the car goes too slow
 
     return reward
