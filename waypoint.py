@@ -20,7 +20,7 @@ def reward_function(params):
     heading = params['heading']
 
     reward = 1.0
-    SPEED_THRESHOLD = 1.2
+    SPEED_THRESHOLD = 0.8
 
     if progress == 100:
         reward += 100
