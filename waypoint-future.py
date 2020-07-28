@@ -25,7 +25,13 @@ def reward_function(params):
         reward += 100
 
     # Calculate the direction of the center line based on the closest waypoints
-    next_point = waypoints[closest_waypoints[1]+2]
+    if closest_waypoints[1]+2<len(waypoints):
+        next_point = waypoints[closest_waypoints[1]+2]
+    elif closest_waypoints[1]+1<len(waypoints):
+        next_point = waypoints[closest_waypoints[1]+1]
+    else:
+        next_point = waypoints[closest_waypoints[1]]
+        
     prev_point = waypoints[closest_waypoints[0]]
     # Calculate the direction in radius, arctan2(dy, dx), the result is (-pi, pi) in radians
     track_direction = math.atan2(next_point[1] - prev_point[1], next_point[0] - prev_point[0])
