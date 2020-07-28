@@ -8,7 +8,7 @@ def reward_function(params):
     speed = params['speed']
     #steps = params['steps']
     progress = params['progress']
-    #all_wheels_on_track = params['all_wheels_on_track']
+    all_wheels_on_track = params['all_wheels_on_track']
     #ABS_STEERING_THRESHOLD = 15
     #SPEED_TRESHOLD = 5
     #TOTAL_NUM_STEPS = 85
@@ -44,6 +44,7 @@ def reward_function(params):
             malus = 0
         reward *= malus
 
-    #reward=reward*(1+log(speed))
+    if all_wheels_on_track:
+        reward=reward*(1+math.log(speed))
 
     return reward
