@@ -1,23 +1,11 @@
 import math
 def reward_function(params):
 
-    #track_width = params['track_width']
-    #distance_from_center = params['distance_from_center']
-    #steering = abs(params['steering_angle'])
-    #direction_stearing=params['steering_angle']
-    speed = params['speed']
-    #steps = params['steps']
-    progress = params['progress']
-    all_wheels_on_track = params['all_wheels_on_track']
-    #ABS_STEERING_THRESHOLD = 15
-    #SPEED_TRESHOLD = 5
-    #TOTAL_NUM_STEPS = 85
-
-
     # Read input variables
     waypoints = params['waypoints']
     closest_waypoints = params['closest_waypoints']
     heading = params['heading']
+    progress = params['progress']
 
     reward = 1.0
 
