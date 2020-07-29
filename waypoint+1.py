@@ -8,7 +8,7 @@ def reward_function(params):
     speed = params['speed']
     #steps = params['steps']
     progress = params['progress']
-    #all_wheels_on_track = params['all_wheels_on_track']
+    all_wheels_on_track = params['all_wheels_on_track']
     #ABS_STEERING_THRESHOLD = 15
     #SPEED_TRESHOLD = 5
     #TOTAL_NUM_STEPS = 85
@@ -20,13 +20,16 @@ def reward_function(params):
     heading = params['heading']
 
     reward = 1.0
-    SPEED_THRESHOLD = 1.0
 
     if progress == 100:
         reward += 100
 
     # Calculate the direction of the center line based on the closest waypoints
-    next_point = waypoints[closest_waypoints[1]]
+    if closest_waypoints[1]+1<len(waypoints):
+        next_point = waypoints[closest_waypoints[1]+1]
+    else:
+        next_point = waypoints[closest_waypoints[1]]
+
     prev_point = waypoints[closest_waypoints[0]]
     # Calculate the direction in radius, arctan2(dy, dx), the result is (-pi, pi) in radians
     track_direction = math.atan2(next_point[1] - prev_point[1], next_point[0] - prev_point[0])
@@ -45,9 +48,5 @@ def reward_function(params):
             malus = 0
         reward *= malus
 
-    if not all_wheels_on_track:
-        reward = 1e-3  # Penalize if the car goes off track
-    elif speed < SPEED_THRESHOLD:
-        reward *= 0.5  # Penalize if the car goes too slow
 
     return reward
